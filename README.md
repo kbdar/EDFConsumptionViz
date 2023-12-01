@@ -1,5 +1,5 @@
 
-<span style="color: blue;"># Electricity Consumption data visualization </span>
+# <span style="color: blue;"> Electricity Consumption data visualization </span>
 
 __This demo demonstrates how you can use MongoDb time series collections to reduce your storage size for time series data using the electricity consumption as an example__
 
