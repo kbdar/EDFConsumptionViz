@@ -1,14 +1,14 @@
-# EDFConsumptionViz
-# MongoDB SparkConnector Demo
 
-__Demo of data science using MongoDB spark connector and Databricks spark community version__
+# Electricity Consumption data visualization
+
+__This demo demonstrates how you can use MongoDb time series collections to reduce your storage size for time series data using the electricity consumption as an example__
 
 
-## Apache Spark
+## Data Source 
 
-Apache Spark is a data processing framework that can quickly perform processing tasks on very large data sets, and can also distribute data processing tasks across multiple computers, either on its own or in tandem with other distributed computing tools. Spark was released as an Apache open source project in 2014.
+This demo is French market specific. EDF/Enedis have installed electronic metres called "Linky" in French households that transmit your energy consumption every 30 mins to your electricity provider (EDF,Total etc). The providers have developped applications that you can access to view your energy consumption. The data is also available in open source format over an API provided by different energy providers. I am connecting via this API to download my energy consumption reported at a frequency of every 30 minutes from the meter but downloadable as one single daily consumption file with data points every 30 minutes.
 
-# MongoDB connector for Apache Spark
+# How to enable and access the API
 
 The MongoDB Connector for Spark provides integration between MongoDB and Apache Spark. With this connector, you can access all Spark libraries for use with MongoDB datasets: Datasets for analysis with SQL (benefiting from automatic schema inference), streaming, machine learning, and graph APIs. 
 
