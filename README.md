@@ -4,13 +4,11 @@
 __This demo demonstrates how you can use MongoDb time series collections to reduce your storage size for time series data using the electricity consumption as an example__
 
 
-<span style="color: red;">## Data Source </span> 
+<span style="color: red;"># Data Source </span> 
 
 This demo is French market specific. EDF/Enedis have installed electronic metres called "Linky" in French households that transmit your energy consumption every 30 mins to your electricity provider (EDF,Total etc). The providers have developped applications that you can access to view your energy consumption. The data is also available in open source format over an API provided by different energy providers. I am connecting via this API to download my energy consumption reported at a frequency of every 30 minutes from the meter but downloadable as one single daily consumption file with data points every 30 minutes.
 
 # How to enable and access the API
-
-The MongoDB Connector for Spark provides integration between MongoDB and Apache Spark. With this connector, you can access all Spark libraries for use with MongoDB datasets: Datasets for analysis with SQL (benefiting from automatic schema inference), streaming, machine learning, and graph APIs. 
 Here are the 2 API's that I used:
 1. API to get the 2 years historical data:
  Here is what the output of the API looks like:  
