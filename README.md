@@ -30,26 +30,18 @@ Log-on to your [Atlas account](http://cloud.mongodb.com) If you do not have a Mo
 __2. How to enable and access the API__
 Here are the 2 API's that I used:
 1. API to get the 2 years historical data:
+   https://conso.boris.sh/api/consumption_load_curve?prm=<prm>&start=2022-01-22&end=2022-01-23'
+   Replace <prm> with your linky ID
  Here is what the output of the API looks like:  
-2. API to get the daily consumption:
+3. API to get the daily consumption: https://conso.boris.sh/api/consumption_load_curve?prm=21121707640844&start=2022-01-22&end=2022-01-23'
    This API returns a JSON payload representing the daily consumption of energy in WattHours with an aggregated data point every 30 mins.
    Here is what the output of API looks like:
 
-<table><tr><td><img src='/images/dbricks0.png' alt=“” height="400"></td></tr></table>
-* Once you have created the account, check for the email in your inbox to activate your account and login at https://community.cloud.databricks.com. Then goto compute section in the menu and create a new cluster.The cluster should take a few minutes to be ready.
 
 <table><tr><td><img src='/images/createcluster.png' alt=“” height="400" width="90%"></td></tr></table>
 
-* Once you have created the account, check for the email in your inbox to activate your account and login at https://community.cloud.databricks.com. Then goto compute section in the menu and create a new cluster. Use the default parameters and just chose a name for your cluster. The cluster should take a few minutes to be ready.
-
-__3. Install MongoDB connector for Spark on the databricks cluster__
-* Once the cluster is ready, go to the "Libraries" tab and click on "Install new" a pop-up will appear.
-* In the "Library Source" select "Maven" and then click on "Search Packages"
-* In the list of packages, search for mongodb.
-* Select The official MongoDb spark connector and make sure the publishing organization in MongoDB.Click select to install the package.
-<table><tr><td><img src='/images/createcluster.png' alt=“” height="400" width="90%"></td></tr></table>
-
-You are now ready to connect your databricks spark to your MongoDB Atlas database cluster.
+__3. Install Python3__
+* pip3 install
 
 ## Execution
 Apache spark allows you to work with a few different programming languages including Python,Java, Scala and R. For the purpose of our demo we will use Python.
