@@ -4,7 +4,7 @@
 __This demo demonstrates how you can use MongoDb time series collections to reduce your storage size for time series data using the electricity consumption as an example__
 
 
-<span style="color: red;"># Data Source </span> 
+## Data Source
 
 This demo is French market specific. EDF/Enedis have installed electronic metres called "Linky" in French households that transmit your energy consumption every 30 mins to your electricity provider (EDF,Total etc). The providers have developped applications that you can access to view your energy consumption. The data is also available in open source format over an API provided by different energy providers. I am connecting via this API to download my energy consumption reported at a frequency of every 30 minutes from the meter but downloadable as one single daily consumption file with data points every 30 minutes.
 
@@ -16,7 +16,7 @@ Here are the 2 API's that I used:
   ```
  Replace _<your-prm>_ with your prm ID and the start and end dates must be between last 2 years.
  Here is what the output of the API looks like:  
-3. API to get the daily consumption:
+2. API to get the daily consumption:
  ```
 'https://conso.boris.sh/api/consumption_load_curve?prm=<your-prm>&start=2022-01-22&end=2022-01-23'
   ```
