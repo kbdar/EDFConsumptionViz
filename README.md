@@ -11,8 +11,15 @@ This demo is French market specific. EDF/Enedis have installed electronic metres
 # How to enable and access the API
 Here are the 2 API's that I used:
 1. API to get the 2 years historical data:
+ ```
+'https://conso.boris.sh/api/consumption_load_curve?prm=<your-prm>&start=2022-01-22&end=2022-01-23'
+  ```
+ Replace _<your-prm>_ with your prm ID and the start and end dates must be between last 2 years.
  Here is what the output of the API looks like:  
-2. API to get the daily consumption:
+3. API to get the daily consumption:
+ ```
+'https://conso.boris.sh/api/consumption_load_curve?prm=<your-prm>&start=2022-01-22&end=2022-01-23'
+  ```
    This API returns a JSON payload representing the daily consumption of energy in WattHours with an aggregated data point every 30 mins.
    Here is what the output of API looks like:
 
