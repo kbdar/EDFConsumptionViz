@@ -15,7 +15,7 @@ This demo is French market specific. EDF/Enedis have installed electronic metres
 ---
 ## Setup
 
-__1. Configure the MongoDB Atlas Environment__
+__1. Configure the MongoDB Atlas Environment__<b>
 Log-on to your [Atlas account](http://cloud.mongodb.com) If you do not have a MongoDB Atlas cluster, you can create an account for free and a life time free cluster M0 on MongoDB Atlas.
 * In the project's Security tab, choose to add a new user, e.g. __main_user__, and for __User Privileges__ specify __Read and write to any database__ (make a note of the password you specify)
 * In the Security tab, add a new __IP Whitelist__ and allow access from everywhere.
