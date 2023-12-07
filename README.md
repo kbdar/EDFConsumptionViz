@@ -11,17 +11,13 @@ This demo is French market specific. EDF/Enedis have installed electronic metres
 # How to enable and access the API
 
 The MongoDB Connector for Spark provides integration between MongoDB and Apache Spark. With this connector, you can access all Spark libraries for use with MongoDB datasets: Datasets for analysis with SQL (benefiting from automatic schema inference), streaming, machine learning, and graph APIs. 
+Here are the 2 API's that I used:
+1. API to get the 2 years historical data:
+ Here is what the output of the API looks like:  
+2. API to get the daily consumption:
+   This API returns a JSON payload representing the daily consumption of energy in WattHours with an aggregated data point every 30 mins.
+   Here is what the output of API looks like:
 
-This proof shows how you can connect MongoDB Atlas database to Apache spark and perform queries and do a few calculations on your data that a data scientist may require. I will add an example of machine learning algorithm later on:
-
-
-For the test 500 fictitious documents representing the data about customers who visited a certain e-commerce website and used the mobile app. Here is the description of what the data contains:
-* A date field
-* A text field
-* A boolean field
-* A field that is in a sub document
-* A field that is inside an array
-* A range based filter
 
 ---
 ## Setup
