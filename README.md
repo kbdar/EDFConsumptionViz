@@ -20,17 +20,20 @@ Here are the 2 API's that I used:
 ---
 ## Setup
 
-__1. Configure Atlas Environment__
-* Log-on to your [Atlas account](http://cloud.mongodb.com) (using the MongoDB SA preallocated Atlas credits system) and navigate to your SA project
+__1. Configure the MongoDB Atlas Environment__
+Log-on to your [Atlas account](http://cloud.mongodb.com) If you do not have a MongoDB Atlas cluster, you can create an account for free and a life time free cluster M0 on MongoDB Atlas.
 * In the project's Security tab, choose to add a new user, e.g. __main_user__, and for __User Privileges__ specify __Read and write to any database__ (make a note of the password you specify)
 * In the Security tab, add a new __IP Whitelist__ and allow access from everywhere.
 * Create an __M10__ based 3 node replica-set in a single cloud provider region of your choice with default settings
 * In the Atlas console, for the database cluster you deployed, click the __Connect button__, select __Connect Your Application__, and for the __latest Node.js version__ copy the __Connection String Only__ - make a note of this MongoDB URL address to be used in the next step
 
-__2. Create a cluster on Databricks__
-* Goto https://community.cloud.databricks.com
-* At the login screen click on Sign Up if you do not have a databricks communnity account yet
-* Once you are on the signup screen and you have entered your details, make sure to click on the "Use Community" link to be able to use the free community version of databricks(see creen shot).
+__2. How to enable and access the API__
+Here are the 2 API's that I used:
+1. API to get the 2 years historical data:
+ Here is what the output of the API looks like:  
+2. API to get the daily consumption:
+   This API returns a JSON payload representing the daily consumption of energy in WattHours with an aggregated data point every 30 mins.
+   Here is what the output of API looks like:
 
 <table><tr><td><img src='/images/dbricks0.png' alt=“” height="400"></td></tr></table>
 * Once you have created the account, check for the email in your inbox to activate your account and login at https://community.cloud.databricks.com. Then goto compute section in the menu and create a new cluster.The cluster should take a few minutes to be ready.
