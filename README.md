@@ -25,19 +25,41 @@ Log-on to your [Atlas account](http://cloud.mongodb.com) If you do not have a Mo
 __2. How to enable and access the API__
 * You only need to have an electrivity connecction and a contract with one of the energy providers. You then will open an accunt at mon-compte.enedis.fr and enable the access to your linky.
 You will then be provided with an access token that you can use to make API requests.
-Here are the 2 API's that I used:
+Here is 2 API that I used:
 - API to get the 2 years historical data:
  ```
 'https://conso.boris.sh/api/consumption_load_curve?prm=<your-prm>&start=2022-01-22&end=2022-01-23'
   ```
  Replace _<your-prm>_ with your prm ID and the start and end dates must be between last 2 years.
- Here is what the output of the API looks like:  
- - API to get the daily consumption:
- ```
-'https://conso.boris.sh/api/consumption_load_curve?prm=<your-prm>&start=2022-01-22&end=2022-01-23'
-  ```
-   This API returns a JSON payload representing the daily consumption of energy in WattHours with an aggregated data point every 30 mins.
-   Here is what the output of API looks like:
+ To get the data for day x you can enter the start date as day x and end date as day x+1.
+ Here is a part of what the output of the API looks like:  
+   ```
+   {
+        "usage_point_id": "21121707640844",
+        "start": "2023-11-14",
+        "end": "2023-11-17",
+        "quality": "BRUT",
+        "reading_type": {
+            "unit": "W",
+            "measurement_kind": "power",
+            "aggregate": "average"
+        },
+        "interval_reading": [
+            {
+                "value": "1222",
+                "date": "2023-11-14 00:30:00",
+                "interval_length": "PT30M",
+                "measure_type": "B"
+            },
+            {
+                "value": "164",
+                "date": "2023-11-14 01:00:00",
+                "interval_length": "PT30M",
+                "measure_type": "B"
+            }
+           ]
+      }
+```
 
 ##Note:
 Do not make too many requests or your IP adress will be blocked.
@@ -46,8 +68,11 @@ Only make minimùal requests and for test purposes if you want to make few reque
 
 <table><tr><td><img src='/images/createcluster.png' alt=“” height="400" width="90%"></td></tr></table>
 
-__3. Install Python3__
-* pip3 install
+__3. Clone the code files in this repository__
+* Open settings.py file and enter all your parameters as shown here:
+  ```
+  
+  ```
 
 __3. Install Python3__
 * pip3 install
