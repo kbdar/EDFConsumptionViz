@@ -9,19 +9,7 @@ __This demo demonstrates how you can use MongoDb time series collections to redu
 This demo is French market specific. EDF/Enedis have installed electronic metres called "Linky" in French households that transmit your energy consumption every 30 mins to your electricity provider (EDF,Total etc). The providers have developped applications that you can access to view your energy consumption. The data is also available in open source format over an API provided by different energy providers. I am connecting via this API to download my energy consumption reported at a frequency of every 30 minutes from the meter but downloadable as one single daily consumption file with data points every 30 minutes.
 
 # How to enable and access the API
-Here are the 2 API's that I used:
-1. API to get the 2 years historical data:
- ```
-'https://conso.boris.sh/api/consumption_load_curve?prm=<your-prm>&start=2022-01-22&end=2022-01-23'
-  ```
- Replace _<your-prm>_ with your prm ID and the start and end dates must be between last 2 years.
- Here is what the output of the API looks like:  
-2. API to get the daily consumption:
- ```
-'https://conso.boris.sh/api/consumption_load_curve?prm=<your-prm>&start=2022-01-22&end=2022-01-23'
-  ```
-   This API returns a JSON payload representing the daily consumption of energy in WattHours with an aggregated data point every 30 mins.
-   Here is what the output of API looks like:
+
 
 
 ---
@@ -35,14 +23,25 @@ Log-on to your [Atlas account](http://cloud.mongodb.com) If you do not have a Mo
 * In the Atlas console, for the database cluster you deployed, click the __Connect button__, select __Connect Your Application__, and for the __latest Node.js version__ copy the __Connection String Only__ - make a note of this MongoDB URL address to be used in the next step
 
 __2. How to enable and access the API__
+* You only need to have an electrivity connecction and a contract with one of the energy providers. You then will open an accunt at mon-compte.enedis.fr and enable the access to your linky.
+You will then be provided with an access token that you can use to make API requests.
 Here are the 2 API's that I used:
-1. API to get the 2 years historical data:
-   https://conso.boris.sh/api/consumption_load_curve?prm=<prm>&start=2022-01-22&end=2022-01-23'
-   Replace <prm> with your linky ID
+- API to get the 2 years historical data:
+ ```
+'https://conso.boris.sh/api/consumption_load_curve?prm=<your-prm>&start=2022-01-22&end=2022-01-23'
+  ```
+ Replace _<your-prm>_ with your prm ID and the start and end dates must be between last 2 years.
  Here is what the output of the API looks like:  
-3. API to get the daily consumption: https://conso.boris.sh/api/consumption_load_curve?prm=21121707640844&start=2022-01-22&end=2022-01-23'
+ - API to get the daily consumption:
+ ```
+'https://conso.boris.sh/api/consumption_load_curve?prm=<your-prm>&start=2022-01-22&end=2022-01-23'
+  ```
    This API returns a JSON payload representing the daily consumption of energy in WattHours with an aggregated data point every 30 mins.
    Here is what the output of API looks like:
+
+##Note:
+Do not make too many requests or your IP adress will be blocked.
+Only make minimùal requests and for test purposes if you want to make few requests, do it with some delay between 2 consecutive requests.
 
 
 <table><tr><td><img src='/images/createcluster.png' alt=“” height="400" width="90%"></td></tr></table>
@@ -50,20 +49,7 @@ Here are the 2 API's that I used:
 __3. Install Python3__
 * pip3 install
 
-## Execution
-Apache spark allows you to work with a few different programming languages including Python,Java, Scala and R. For the purpose of our demo we will use Python.
+__3. Install Python3__
+* pip3 install
 
-__1. Create a Python Jupyter Notebook__
-Apache spark allows you to work with a few different programming languages including Python,Java, Scala and R. For the purpose of our demo we will use Python.
-* Go to the databricks workspace home and click on "Creat Notebook"
-<table><tr><td><img src='/images/createcluster.png' alt=“” height="400" width="90%"></td></tr></table>
-* Chose your cluster and then select "Python" as the default language, click Create. 
-
-Copy and paste the below code in your Jupyter notebook
-  ``` 
-db = "ML"
-coll = "e-commerce"
-resultDF = spark.read.format("mongo").option("database", db).option("collection", coll).option("partitioner", "MongoSinglePartitioner").load()
-  ```
-__3. Load Data Into A Collection In The Atlas Cluster__
 
