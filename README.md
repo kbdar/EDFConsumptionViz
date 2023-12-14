@@ -8,6 +8,12 @@ __This demo demonstrates how you can use MongoDb time series collections to redu
 
 This demo is French market specific. EDF/Enedis have installed electronic metres called "Linky" in French households that transmit your energy consumption every 30 mins to your electricity provider (EDF,Total etc). The providers have developped applications that you can access to view your energy consumption. The data is also available in open source format over an API provided by different energy providers. I am connecting via this API to download my energy consumption reported at a frequency of every 30 minutes from the meter but downloadable as one single daily consumption file with data points every 30 minutes.
 
+## The Code
+Here is a short description describing the code:
+1. settings.py: Paramters for your wwww.py program.
+2. .py: Code to download the 2 years historic data, format it into smaller documents and insert same data into 2 MongoDB collections (1 normal and 1 time series collection).
+3. triggers.js: A function to associate to your scheduled trigger in MongoDB Atlas that rill run once a day to get the previous days consumption data.
+4. formatDate.js: Used by triggers.js to format the date as required by the API.
 ---
 ## Setup
 
@@ -90,4 +96,14 @@ python3 2yearsdata.py
  ```
 The code will download the data, format it and update it to your MongoDb data base. You will see a progress bar displayed to show you the progress of  the update.
 
-
+__5. Create MongoDbAtlas Trigger__
+Create a MongoDB Atlas Scheduled trigger to run once a day and get the data from the API, format the data and insert inot MongoDB collections. I am inserting exactly the same data into 2 collections to demonstrate the advantages to time series collection. Here is how to do it:
+* In MongoDB Atlas click on Triggers in the left menu.
+* Give a name to your trigger and chose the "scheduled" option.
+* On the advanced scheduled settings use the following cron expression to schedule your trigger at 7 AM in the morning.The recommended time by the author of the API is between 6 AM and 10 AM.
+```
+00 07 * * *
+```
+__5. Charts__
+Go to "Charts" tab in your MongoDB Atlas and create your desired charts in a matter of minutes. Here is a screen grab of few charts I created on my data.
+<table><tr><td><img src='/images/createcluster.png' alt=“” height="400" width="90%"></td></tr></table>
