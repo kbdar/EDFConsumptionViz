@@ -66,7 +66,8 @@ Only make minimùal requests and for test purposes if you want to make few reque
 
 __3. Clone the code files in this repository__
 * Open settings.py file and enter all your parameters as shown here:
-  ```
+
+```
 URI_STRING = "mongodb+srv://<username>:<password>@yourcluster.mongodb.net/test?retryWrites=true&w=majority"
 DBTS = "electricity"
 COLLECTION = "embedded_movies"
