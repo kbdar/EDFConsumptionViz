@@ -67,10 +67,26 @@ Only make minimùal requests and for test purposes if you want to make few reque
 __3. Clone the code files in this repository__
 * Open settings.py file and enter all your parameters as shown here:
   ```
-  
+URI_STRING = "mongodb+srv://<username>:<password>@yourcluster.mongodb.net/test?retryWrites=true&w=majority"
+DBTS = "electricity"
+COLLECTION = "embedded_movies"
+COLL_ELEC = "consumption"
+COLL_ELEC_TS = "consumptionTS"
+TOKEN = '<Your enedis token here>'
+ENEDIS_API = 'https://conso.boris.sh/api/consumption_load_curve'
+LINKY_PRM = '<Your linky PRM>'
   ```
+Enter your MongoDB cluster URL, ENEDIS Token and your linky PRM, the rest of the paramaters you can leave them as it is unless you want some special names for your DB and collections.
 
 __3. Install Python3__
-* pip3 install
+ ```
+pip3 install
+ ```
+__4. Get 2 years of historical data__
+You can download the 2 years of your meter data by running the following code.
+ ```
+python3 2yearsdata.py
+ ```
+The code will download the data, format it and update it to your MongoDb data base. You will see a progress bar displayed to show you the progress of  the update.
 
 
