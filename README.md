@@ -1,5 +1,5 @@
 
-# <span style="color: blue;"> Electricity Consumption data visualization </span>
+## Electricity Consumption data visualization
 
 __This demo demonstrates how you can use MongoDb time series collections to reduce your storage size for time series data using the electricity consumption as an example__
 
@@ -8,14 +8,10 @@ __This demo demonstrates how you can use MongoDb time series collections to redu
 
 This demo is French market specific. EDF/Enedis have installed electronic metres called "Linky" in French households that transmit your energy consumption every 30 mins to your electricity provider (EDF,Total etc). The providers have developped applications that you can access to view your energy consumption. The data is also available in open source format over an API provided by different energy providers. I am connecting via this API to download my energy consumption reported at a frequency of every 30 minutes from the meter but downloadable as one single daily consumption file with data points every 30 minutes.
 
-# How to enable and access the API
-
-
-
 ---
 ## Setup
 
-__1. Configure the MongoDB Atlas Environment__<b>
+__1. Configure the MongoDB Atlas Environment__
 Log-on to your [Atlas account](http://cloud.mongodb.com) If you do not have a MongoDB Atlas cluster, you can create an account for free and a life time free cluster M0 on MongoDB Atlas.
 * In the project's Security tab, choose to add a new user, e.g. __main_user__, and for __User Privileges__ specify __Read and write to any database__ (make a note of the password you specify)
 * In the Security tab, add a new __IP Whitelist__ and allow access from everywhere.
@@ -61,7 +57,7 @@ Here is 2 API that I used:
       }
 ```
 
-##Note:
+#Note:
 Do not make too many requests or your IP adress will be blocked.
 Only make minimùal requests and for test purposes if you want to make few requests, do it with some delay between 2 consecutive requests.
 
