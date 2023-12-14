@@ -108,4 +108,4 @@ Create a MongoDB Atlas Scheduled trigger to run once a day and get the data from
 ```
 __5. Charts__
 Go to "Charts" tab in your MongoDB Atlas and create your desired charts in a matter of minutes. Here is a screen grab of few charts I created on my data.
-<table><tr><td><img src='/images/charts.png' alt=“” height="400" width="90%"></td></tr></table>
+<table><tr><td><img src='/image/charts.png' alt=“” height="400" width="90%"></td></tr></table>
