@@ -2,7 +2,7 @@
 ## Electricity Consumption data visualization
 
 This demo demonstrates how you can use __MongoDB TIME SERIES collections__ to reduce your storage size for time series data using the electricity consumption as an example. Here is what the data size in my 2 collections looks like. The data size is small for me but you can interpolate it for millions of customers that an energy provider has and get an idea. In my case as you can see I have a reduction of 95% in data size and 90% in storage size
-<table><tr><td><img src='/image/comparison.png' alt=“” height="400" width="90%"></td></tr></table>
+<table><tr><td><img src='/image/comparison.png' alt=“” height="200" width="50%"></td></tr></table>
 
 
 ## Data Source
