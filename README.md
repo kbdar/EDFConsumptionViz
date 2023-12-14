@@ -2,7 +2,7 @@
 ## Electricity Consumption data visualization
 
 This demo demonstrates how you can use __MongoDB TIME SERIES collections__ to reduce your storage size for time series data using the electricity consumption as an example. Here is what the data size in my 2 collections looks like. The data size is small for me but you can interpolate it for millions of customers that an energy provider has and get an idea. In my case as you can see I have a reduction of 95% in data size and 90% in storage size
-<table><tr><td><img src='/images/createcluster.png' alt=“” height="400" width="90%"></td></tr></table>
+<table><tr><td><img src='/images/comparison.png' alt=“” height="400" width="90%"></td></tr></table>
 
 
 ## Data Source
@@ -97,10 +97,11 @@ python3 2yearsdata.py
  ```
 The code will download the data, format it and update it to your MongoDb data base. You will see a progress bar displayed to show you the progress of  the update.
 
-__5. Create MongoDbAtlas Trigger__
+__5. Create MongoDBAtlas Trigger__
 Create a MongoDB Atlas Scheduled trigger to run once a day and get the data from the API, format the data and insert inot MongoDB collections. I am inserting exactly the same data into 2 collections to demonstrate the advantages to time series collection. Here is how to do it:
 * In MongoDB Atlas click on Triggers in the left menu.
 * Give a name to your trigger and chose the "scheduled" option.
+  <table><tr><td><img src='/images/schedule.png' alt=“” height="400" width="90%"></td></tr></table>
 * On the advanced scheduled settings use the following cron expression to schedule your trigger at 7 AM in the morning.The recommended time by the author of the API is between 6 AM and 10 AM.
 ```
 00 07 * * *
