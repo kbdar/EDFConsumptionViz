@@ -72,10 +72,10 @@ DBTS = "electricity"
 COLLECTION = "embedded_movies"
 COLL_ELEC = "consumption"
 COLL_ELEC_TS = "consumptionTS"
-TOKEN = '<Your enedis token here>'
-ENEDIS_API = 'https://conso.boris.sh/api/consumption_load_curve'
-LINKY_PRM = '<Your linky PRM>'
-  ```
+TOKEN = "<Your enedis token here>"
+ENEDIS_API = "https://conso.boris.sh/api/consumption_load_curve"
+LINKY_PRM = "<Your linky PRM>"
+```
 Enter your MongoDB cluster URL, ENEDIS Token and your linky PRM, the rest of the paramaters you can leave them as it is unless you want some special names for your DB and collections.
 
 __3. Install Python3__
