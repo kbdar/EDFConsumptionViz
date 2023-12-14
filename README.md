@@ -10,12 +10,12 @@ This demo demonstrates how you can use __MongoDB TIME SERIES collections__ to re
 This demo is French market specific. EDF/Enedis have installed electronic metres called "Linky" in French households that transmit your energy consumption every 30 mins to your electricity provider (EDF,Total etc). The providers have developped applications that you can access to view your energy consumption. The data is also available in open source format over an API provided by different energy providers. I am connecting via this API to download my energy consumption reported at a frequency of every 30 minutes from the meter but downloadable as one single daily consumption file with data points every 30 minutes.
 
 ## The Code
-Here is a short description describing the code:
+Here is a short description of what the code does:
 1. settings.py: Paramters for your import2Years.py program.
 2. import2Years.py: Code to download the 2 years historic data, format it into smaller documents and insert same data into 2 MongoDB collections (1 normal and 1 time series collection).
    Note: I have used a sleep in the function to only have 1 request/second. If you execute a lot of requests you will get blocked by the API provider.
-4. triggers.js: A function to associate to your scheduled trigger in MongoDB Atlas that rill run once a day to get the previous days consumption data.
-5. formatDate.js: Used by triggers.js to format the date as required by the API.
+3. triggers.js: A function to associate to your scheduled trigger in MongoDB Atlas that rill run once a day to get the previous days consumption data.
+4. formatDate.js: Used by triggers.js to format the date as required by the API.
 ---
 ## Setup
 
@@ -23,7 +23,7 @@ __1. Configure the MongoDB Atlas Environment__
 * Log-on to your [Atlas account](http://cloud.mongodb.com) If you do not have a MongoDB Atlas cluster, you can create an account for free and a life time free cluster M0 on MongoDB Atlas.
 * In the project's Security tab, choose to add a new user, e.g. __main_user__, and for __User Privileges__ specify __Read and write to any database__ (make a note of the password you specify)
 * In the Security tab, add a new __IP Whitelist__ and allow access from everywhere.
-* Create an __M10__ based 3 node replica-set in a single cloud provider region of your choice with default settings
+* Create an __M10__ or a free M0 cluster based 3 node replica-set in a single cloud provider region of your choice.
 * In the Atlas console, for the database cluster you deployed, click the __Connect button__, select __Connect Your Application__, and for the __latest Node.js version__ copy the __Connection String Only__ - make a note of this MongoDB URL address to be used in the next step
 
 __2. How to enable and access the API__
@@ -85,7 +85,7 @@ TOKEN = "<Your enedis token here>"
 ENEDIS_API = "https://conso.boris.sh/api/consumption_load_curve"
 LINKY_PRM = "<Your linky PRM>"
 ```
-Enter your MongoDB cluster URL, ENEDIS Token and your linky PRM, the rest of the paramaters you can leave them as it is unless you want some special names for your DB and collections.
+Enter your MongoDB cluster URL as noted in Step 1, ENEDIS Token and your linky PRM, the rest of the paramaters you can leave them as it is unless you want some special names for your DB and collections.
 
 __3. Install Python3__
  ```
