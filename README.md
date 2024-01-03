@@ -11,10 +11,10 @@ This demo is French market specific. EDF/Enedis have installed electronic metres
 
 ## The Code
 Here is a short description of what the code does:
-1. settings.py: Paramters for your import2Years.py program.
+1. settings.py: Parameters for your import2Years.py program.
 2. import2Years.py: Code to download the 2 years historic data, format it into smaller documents and insert same data into 2 MongoDB collections (1 normal and 1 time series collection).
    Note: I have used a sleep in the function to only have 1 request/second. If you execute a lot of requests you will get blocked by the API provider.
-3. triggers.js: A function to associate to your scheduled trigger in MongoDB Atlas that rill run once a day to get the previous days consumption data.
+3. trigger.js: A function to associate to your scheduled trigger in MongoDB Atlas that rill run once a day to get the previous days consumption data.
 4. formatDate.js: Used by triggers.js to format the date as required by the API.
 ---
 ## Setup
