@@ -23,7 +23,7 @@ __1. Configure the MongoDB Atlas Environment__
 * Log-on to your [Atlas account](http://cloud.mongodb.com) If you do not have a MongoDB Atlas cluster, you can create an account for free and a life time free cluster M0 on MongoDB Atlas.
 * In the project's Security tab, choose to add a new user, e.g. __main_user__, and for __User Privileges__ specify __Read and write to any database__ (make a note of the password you specify)
 * In the Security tab, add a new __IP Whitelist__ and allow access from everywhere.
-* Create an __M10__ or a free M0 cluster based 3 node replica-set in a single cloud provider region of your choice.
+* Create a free M0 (or a paid M10 if you wish)cluster based 3 node replica-set in a cloud provider region of your choice.
 * In the Atlas console, for the database cluster you deployed, click the __Connect button__, select __Connect Your Application__, and for the __latest Node.js version__ copy the __Connection String Only__ - make a note of this MongoDB URL address to be used in the next step
 
 __2. How to enable and access the API__
@@ -70,8 +70,6 @@ Do not make too many requests or your IP adress will be blocked.
 Only make minimùal requests and for test purposes if you want to make few requests, do it with some delay between 2 consecutive requests.
 
 
-<table><tr><td><img src='/images/createcluster.png' alt=“” height="400" width="90%"></td></tr></table>
-
 __3. Clone the code files in this repository__
 * Open settings.py file and enter all your parameters as shown here:
 
@@ -87,9 +85,11 @@ LINKY_PRM = "<Your linky PRM>"
 ```
 Enter your MongoDB cluster URL as noted in Step 1, ENEDIS Token and your linky PRM, the rest of the paramaters you can leave them as it is unless you want some special names for your DB and collections.
 
-__3. Install Python3__
+__3. Install Python3 and required libraries__
  ```
-pip3 install
+brew install python3
+pip3 install tqdm
+pip3 install pymongo
  ```
 __4. Get 2 years of historical data__
 You can download the 2 years of your meter data by running the following code.
