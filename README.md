@@ -25,6 +25,7 @@ __1. Configure the MongoDB Atlas Environment__
 * In the Security tab, add a new __IP Whitelist__ and allow access from everywhere.
 * Create a free M0 (or a paid M10 if you wish)cluster based 3 node replica-set in a cloud provider region of your choice.
 * In the Atlas console, for the database cluster you deployed, click the __Connect button__, select __Connect Your Application__, and for the __latest Node.js version__ copy the __Connection String Only__ - make a note of this MongoDB URL address to be used in the next step
+Note: You will need to **create the timeSeries collection "consumptionTS"** explicitly (use Atlas UI to create it) where as the normal collection will get created based on the name specified in the **"parameters.py"**. 
 
 __2. How to enable and access the API__
 * You only need to have an electrivity connecction and a contract with one of the energy providers. You then will open an accunt at mon-compte.enedis.fr and enable the access to your linky.
