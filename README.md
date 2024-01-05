@@ -28,7 +28,7 @@ __1. Configure the MongoDB Atlas Environment__
 Note: You will need to **create the timeSeries collection "consumptionTS"** explicitly (use Atlas UI to create it) where as the normal collection will get created based on the name specified in the **"parameters.py"**. 
 
 __2. How to enable and access the API__
-* You only need to have an electrivity connecction and a contract with one of the energy providers. You then will open an accunt at mon-compte.enedis.fr and enable the access to your linky.
+* You only need to have an electricity connection and a contract with one of the energy providers. You then will open an accunt at mon-compte.enedis.fr and enable the access to your linky.
 You will then be provided with an access token that you can use to make API requests.
 Here is 2 API that I used:
 - API to get the 2 years historical data:
