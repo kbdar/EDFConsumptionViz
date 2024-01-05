@@ -66,7 +66,7 @@ Here is 2 API that I used:
       }
 ```
 
-#Note:
+**Note:**
 Do not make too many requests or your IP adress will be blocked.
 Only make minimùal requests and for test purposes if you want to make few requests, do it with some delay between 2 consecutive requests.
 
