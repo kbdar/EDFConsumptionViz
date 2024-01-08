@@ -1,20 +1,17 @@
 exports = async function(changeEvent) {
-   
     yesterday = new Date()
-    //initialize todays date in the yyyy-mm-dd format
     dtToday = await context.functions.execute('formatDate', new Date())
-    //initialize yesterdays  date in the yyyy-mm-dd format
     yesterday.setDate(yesterday.getDate() - 1);
     dtYesterday = await context.functions.execute('formatDate',yesterday)
     
 
-    // Initialize the ENEDIS API enpoint
+    // Conso API URL.
     const url = 'https://conso.boris.sh/api/consumption_load_curve';
-    // Initialize the API Token provided by ENEDIS
-    const APIToken = "<ENEDIS Token here>";//ENEDIS token;
+    // Use the name you gave the value of your API key in the “Values” utility inside of App Services
+    const APIToken = context.values.get("APIToken");
     
     const params = {
-      prm: '<replace with linky prm>', 
+      prm: '21121707640844',
       start: dtYesterday,
      end: dtToday,
     };
@@ -34,7 +31,7 @@ const fullUrl = url + '?' + queryString;
           headers: headers,
         });
 
-        // Parse the JSON response and prepare a set of documents to insert into MongoDB
+        // Parse the JSON response
         let responseData = EJSON.parse(response.body.text());
         const fieldsToInclude = ['usage_point_id','start','end','quality','reading_type'];
 
@@ -52,9 +49,9 @@ for (const item of responseData["interval_reading"]) {
 
     for (const [key, value] of Object.entries(item)) {
         if (key === "date") {
-            doc[key] = new Date(value); 
+            doc[key] = new Date(value); // Assuming 'value' is a string representing a date
         } else if (key === "value") {
-            doc[key] = parseInt(value, 10); 
+            doc[key] = parseInt(value, 10); // Assuming 'value' is a string representing an integer
         } else {
             doc[key] = value;
         }
@@ -65,9 +62,9 @@ for (const item of responseData["interval_reading"]) {
             const mongodb = context.services.get('mongodb-atlas');
             const db = mongodb.db('electricity'); // Replace with your database name.
             const collection = db.collection('consumption'); // Replace with your collection name.
-            const collectionTS = db.collection('consumptionTS'); // Replace with your TS collection name.
+            const collectionTS = db.collection('consumptionTS'); // Replace with your collection name.
 
-            // Insert many the documents in MongoDB to a normal collection and a time series collection
+            // Insert many the documents in MongoDB.
             const result = await collection.insertMany(docArray);
             const resultTS = await collectionTS.insertMany(docArray);
     } catch(err) {
