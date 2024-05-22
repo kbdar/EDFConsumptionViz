@@ -1,26 +1,26 @@
 
 ## Electricity Consumption data visualization
 
-This demo demonstrates how you can use __MongoDB TIME SERIES collections__ to reduce your storage size for time series data using the electricity consumption as an example. Here is what the data size in my 2 collections looks like. The data size is small for me but you can interpolate it for millions of customers that an energy provider has and get an idea. In my case as you can see I have a reduction of 95% in data size and 90% in storage size
+This demo demonstrates how you can use__MongoDB TIME SERIES collections__ and __MongoDB Developer Data Platform__  to build a fully functional system to retrieve your electricity meter data, drastically reduce your data storage footprint for time series data and reduce architectural complexity of your system. Here is what the data size in my 2 collections looks like. The data size is small for me but you can interpolate it for millions of customers that an energy provider has and get an idea. In my case as you can see I have a reduction of 95% in data size and 90% in storage size
 <table><tr><td><img src='/image/comparison.png' alt=“” height="100" width="fit"></td></tr></table>
 
 
 ## Data Source
 
-This demo is French market specific. EDF/Enedis have installed electronic metres called "Linky" in French households that transmit your energy consumption every 30 mins to your electricity provider (EDF,Total etc). The providers have developped applications that you can access to view your energy consumption. The data is also available in open source format over an API provided by different energy providers. I am connecting via this API to download my energy consumption reported at a frequency of every 30 minutes from the meter but downloadable as one single daily consumption file with data points every 30 minutes.
+This demo is French market specific. EDF/Enedis have installed electronic meters called "Linky" in French households that transmit your energy consumption every 30 mins to your electricity provider (EDF,Total etc). The providers have developed applications that you can access to view your energy consumption. The data is also available in open source format over an API provided by different energy providers. I am connecting via this API to download my energy consumption reported at a frequency of every 30 minutes from the meter but downloadable as one single daily consumption file with data points every 30 minutes.
 
 ## The Code
 Here is a short description of what the code does:
 1. settings.py: Parameters for your import2Years.py program.
-2. Optional - import2Years.py: Code to download the 2 years historic data, format it into smaller documents and insert same data into 2 MongoDB collections (1 normal and 1 time series collection).
-   Note: I have used a sleep in the function to only have 1 request/second. If you execute a lot of requests you will get blocked by the API provider.
-3. trigger.js: A function to associate to your scheduled trigger in MongoDB Atlas that rill run once a day to get the previous days consumption data.
+2. Optional - import2Years.py: Code to download the 2 years historic data, format it into smaller documents and insert the same data into 2 MongoDB collections (1 normal and 1 time series collection).
+   Note: I have used “sleep” in the function to only have 1 request/second. If you execute a lot of requests you will get blocked by the API provider.
+3. trigger.js: A function to associate to your scheduled trigger in MongoDB Atlas that will run once a day to get the previous day's consumption data.
 4. formatDate.js: Used by triggers.js to format the date as required by the API.
 ---
 ## Setup
 
 __1. Configure the MongoDB Atlas Environment__
-* Log-on to your [Atlas account](http://cloud.mongodb.com) If you do not have a MongoDB Atlas cluster, you can create an account for free and a life time free cluster M0 on MongoDB Atlas.
+* Log-on to your [Atlas account](http://cloud.mongodb.com) If you do not have a MongoDB Atlas cluster, you can create an account for free and a lifetime free cluster M0 on MongoDB Atlas.
 * In the project's Security tab, choose to add a new user, e.g. __main_user__, and for __User Privileges__ specify __Read and write to any database__ (make a note of the password you specify)
 * In the Security tab, add a new __IP Whitelist__ and allow access from everywhere.
 * Create a free M0 (or a paid M10 if you wish)cluster based 3 node replica-set in a cloud provider region of your choice.
@@ -28,14 +28,14 @@ __1. Configure the MongoDB Atlas Environment__
 Note: You will need to **create the timeSeries collection "consumptionTS"** explicitly (use Atlas UI to create it) where as the normal collection will get created based on the name specified in the **"parameters.py"**. 
 
 __2. How to enable and access the API__
-* You only need to have an electricity connection and a contract with one of the energy providers. You then will open an accunt at mon-compte.enedis.fr and enable the access to your linky.
+* You only need to have an electricity connection and a contract with one of the energy providers. You then will open an account at mon-compte.enedis.fr and enable the access to your linky.
 You will then be provided with an access token that you can use to make API requests.
 Here is 2 API that I used:
 - API to get the 2 years historical data:
  ```
 'https://conso.boris.sh/api/consumption_load_curve?prm=<your-prm>&start=2022-01-22&end=2022-01-23'
   ```
- Replace _<your-prm>_ with your prm ID and the start and end dates must be between last 2 years.
+ Replace _<your-prm>_ with your prm ID and the start and end dates must be between the last 2 years.
  To get the data for day x you can enter the start date as day x and end date as day x+1.
  Here is a part of what the output of the API looks like:  
    ```
@@ -67,8 +67,8 @@ Here is 2 API that I used:
 ```
 
 **Note:**
-Do not make too many requests or your IP adress will be blocked.
-Only make minimùal requests and for test purposes if you want to make few requests, do it with some delay between 2 consecutive requests.
+Do not make too many requests or your IP address will be blocked.
+Only make minimùal requests and for test purposes if you want to make a few requests, do it with some delay between 2 consecutive requests.
 
 
 __3. Clone the code files in this repository__
@@ -84,7 +84,7 @@ TOKEN = "<Your enedis token here>"
 ENEDIS_API = "https://conso.boris.sh/api/consumption_load_curve"
 LINKY_PRM = "<Your linky PRM>"
 ```
-Enter your MongoDB cluster URL as noted in Step 1, ENEDIS Token and your linky PRM, the rest of the paramaters you can leave them as it is unless you want some special names for your DB and collections.
+Enter your MongoDB cluster URL as noted in Step 1, ENEDIS Token and your linky PRM, the rest of the parameters you can leave them as it is unless you want some special names for your DB and collections.
 
 __3. Install Python3 and required libraries__
  ```
@@ -97,17 +97,19 @@ You can download the 2 years of your meter data by running the following code.
  ```
 python3 2yearsdata.py
  ```
-The code will download the data, format it and update it to your MongoDb data base. You will see a progress bar displayed to show you the progress of  the update.
+The code will download the data, format it and update it to your MongoDB database. You will see a progress bar displayed to show you the progress of  the update.
 
 __5. Create MongoDBAtlas Trigger__
-Create a MongoDB Atlas Scheduled trigger to run once a day and get the data from the API, format the data and insert inot MongoDB collections. I am inserting exactly the same data into 2 collections to demonstrate the advantages to time series collection. Here is how to do it:
+Create a MongoDB Atlas Scheduled trigger to run once a day and get the data from the API, format the data and insert into MongoDB collections. I am inserting exactly the same data into 2 collections to demonstrate the advantages to time series collection. Here is how to do it:
 * In MongoDB Atlas click on Triggers in the left menu.
-* Give a name to your trigger and chose the "scheduled" option.
+* Give a name to your trigger and choose the "scheduled" option.
   <table><tr><td><img src='/image/schedule.png' alt=“” height="200" width="fit"></td></tr></table>
 * On the advanced scheduled settings use the following cron expression to schedule your trigger at 7 AM in the morning.The recommended time by the author of the API is between 6 AM and 10 AM.
 ```
 00 07 * * *
 ```
 __5. Charts__
-Go to "Charts" tab in your MongoDB Atlas and create your desired charts in a matter of minutes. Here is a screen grab of few charts I created on my data.
+Go to "Charts" tab in your MongoDB Atlas and create your desired charts in a matter of minutes. Here is a screen grab of a few charts I created on my data.
 <table><tr><td><img src='/image/charts.png' alt=“” height="400" width="fit"></td></tr></table>
+
+
