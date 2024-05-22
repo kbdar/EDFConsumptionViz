@@ -1,7 +1,7 @@
 
 ## Electricity Consumption data visualization
 
-This demo demonstrates how you can use__MongoDB TIME SERIES collections__ and __MongoDB Developer Data Platform__  to build a fully functional system to retrieve your electricity meter data, drastically reduce your data storage footprint for time series data and reduce architectural complexity of your system. Here is what the data size in my 2 collections looks like. The data size is small for me but you can interpolate it for millions of customers that an energy provider has and get an idea. In my case as you can see I have a reduction of 95% in data size and 90% in storage size
+This demo demonstrates how you can use __MongoDB TIME SERIES collections__ and __MongoDB Developer Data Platform__  to build a fully functional system to retrieve your electricity meter data, drastically reduce your data storage footprint for time series data and reduce architectural complexity of your system. Here is what the data size in my 2 collections looks like. The data size is small for me but you can interpolate it for millions of customers that an energy provider has and get an idea. In my case as you can see I have a reduction of 95% in data size and 90% in storage size
 <table><tr><td><img src='/image/comparison.png' alt=“” height="100" width="fit"></td></tr></table>
 
 
