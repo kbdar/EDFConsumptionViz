@@ -109,8 +109,17 @@ Create a MongoDB Atlas Scheduled trigger to run once a day and get the data from
 ```
 00 07 * * *
 ```
-__5. Charts__
+__5. Charts wuth natural language capabilities__
 Go to "Charts" tab in your MongoDB Atlas and create your desired charts in a matter of minutes. Here is a screen grab of a few charts I created on my data.
 <table><tr><td><img src='/image/charts.png' alt=“” height="400" width="fit"></td></tr></table>
+MongoDB Atlas charts gives you the ability to create charts manually, how ever try the new natural language capability of MongoDb Atlas charts.
+To do so, when you create a chart in MongoDb Atlas, clique on "natural  language" as shown:
+<table><tr><td><img src='/image/chartsNLP.png' alt=“” height="400" width="fit"></td></tr></table>
+An example of prompt I used:
+Create me a chart to visualiee consumption of last one week. The consumption is in watt hours, convert it to Kilo watt hours.
+Here is the output, a chart you can save and embed in your applications.
+
+
+
 
 
